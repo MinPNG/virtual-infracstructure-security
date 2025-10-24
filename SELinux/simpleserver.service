@@ -1,0 +1,9 @@
+[Unit]
+Description=Simple server for SELinux eval
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/simpleserver
+
+[Install]
+WantedBy=multi-user.target

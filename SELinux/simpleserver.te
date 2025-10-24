@@ -1,0 +1,39 @@
+policy_module(simpleserver, 1.0.0)
+
+require {
+type init_t;
+type bin_t;
+type node_t;
+type svn_port_t;
+type httpd_sys_content_t;
+}
+########################################
+#
+# Declarations
+#
+
+type simpleserver_t;
+type simpleserver_exec_t;
+#permissive simpleserver_t;
+init_daemon_domain(simpleserver_t,simpleserver_exec_t);
+
+
+########################################
+#
+# simpleserver local policy
+#
+
+fs_associate(simpleserver_t);
+allow simpleserver_t self:fifo_file rw_fifo_file_perms;
+allow simpleserver_t bin_t:file { execute execute_no_trans map };
+
+allow simpleserver_t self:unix_stream_socket create_stream_socket_perms;
+allow simpleserver_t self:tcp_socket { accept bind create getattr listen read setopt shutdown write };
+allow simpleserver_t node_t:tcp_socket node_bind;
+allow simpleserver_t svn_port_t:tcp_socket name_bind;
+
+#allow simpleserver_t httpd_sys_content_t:dir read;
+allow simpleserver_t httpd_sys_content_t:file {getattr open read write};
+
+allow init_t simpleserver_exec_t:file { execute execute_no_trans getattr open read };
+
