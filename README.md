@@ -1,4 +1,3 @@
-#Welcome
 All the material was given to me by my professor Timothée RAVIER at INSA Centre Val de Loire
 
 
@@ -6,7 +5,7 @@ The process was done in a virtual environment and I would reccomend doing the sa
 Except the SELinux part that should only exist on Fedora/CentOS, you can do other parts in any Linux machine (replace `dnf update` and `dnf install` with your own version of Linux, i.e : `apt-get install` on Ubuntu/Debian,...)
 
 
-#Getting started
+Getting started
 Prepare the dependencies needed 
 ```
 sudo dnf update -y
@@ -15,7 +14,7 @@ sudo systemctl enable --now docker
 sudo reboot 
 ```
 
-#Create your own http service
+Create your own http service
 Create your own Python script for the server or copy from my `httpserver.py`
 ```
 mkdir /srv/httpserver
@@ -98,7 +97,7 @@ cd docker
 sudo cp /srv/httpserver/httpserver.py .
 touch Dockerfile
 ```
-##Build a Dockerfile for you container
+Build a Dockerfile for you container
 This container use the latest Fedora image
 ```
 FROM registry.fedoraproject.org/fedora:latest
