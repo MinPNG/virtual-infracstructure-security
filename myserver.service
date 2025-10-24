@@ -1,0 +1,26 @@
+[Unit]
+Description=Le server Python
+# Optionnel : Indique qu'il est nécessaire que le réseau soit démarré avant que
+# notre service soit lancé
+After=network-online.target
+Wants=network-online.target
+AssertPathExists=/srv/httpserver
+
+[Service]
+User=httpuser
+Group=httpuser
+WorkingDirectory=/srv/httpserver
+ExecStart=/usr/bin/python3 /srv/httpserver/httpserver.py
+Restart=on-failure
+#Optional directives for security purpose or isolation of your service
+#PrivateTmp=true
+#PrivateDevices=true
+#ProtectSystem=full
+#ProtectHome=true
+#NoNewPrivileges=true
+#MemoryMax=300M
+#RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+#SystemCallFilter=@system-service
+
+[Install]
+WantedBy=multi-user.target
