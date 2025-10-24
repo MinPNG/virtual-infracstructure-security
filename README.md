@@ -5,7 +5,7 @@ The process was done in a virtual environment and I would reccomend doing the sa
 Except the SELinux part that should only exist on Fedora/CentOS, you can do other parts in any Linux machine (replace `dnf update` and `dnf install` with your own version of Linux, i.e : `apt-get install` on Ubuntu/Debian,...)
 
 
-Getting started
+# Getting started
 Prepare the dependencies needed 
 ```
 sudo dnf update -y
@@ -85,7 +85,7 @@ httpuser:x:991:
 If it does not exist, create the user and the usergroup
 
 
-#Host your server on a Docker container
+# Host your server on a Docker container
 If you are not logged in as `root` user , you need to grant access to your user or log in as root
 ```
 sudo su -
@@ -172,8 +172,8 @@ curl localhost:8080
 curl 172.17.0.2:7272
 ```
 
-#Option for your server
-##Non-privileged user
+# Option for your server
+## Non-privileged user
 It is a good pratice to run your container with a non-root user whenever possible
 Start by creating a non-root user and a group by adding this to your Dockerfile
 ```
@@ -230,7 +230,7 @@ Check your web page
 Hello World
 ```
 
-#SELinux
+# SELinux
 SELinux (Securtity Enhanced Linux) is a Linux Security Module that support access control security policies, including MAC (Mandatory Access Control)
 In this session i am going to create a module for a daemon service that control its access to filesystemt and tcpsocket.
 Read more in SELinux/README.md
