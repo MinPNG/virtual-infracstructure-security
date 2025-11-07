@@ -54,7 +54,7 @@ init_daemon_domain(simpleserver_t,simpleserver_exec_t);
 #
 
 #files_read_etc_files(simpleserver_t);
-auth_read_shadow(simpleserver_t);
+#auth_read_shadow(simpleserver_t);
 fs_associate(simpleserver_t);
 allow simpleserver_t self:fifo_file rw_fifo_file_perms;
 allow simpleserver_t bin_t:file { execute execute_no_trans map };
