@@ -1,4 +1,4 @@
-#SELinux
+# SELinux
 We will create a daemon service that run the script python for a simple http server
 You can use the script `simpleserver.py` and `simpleserver.service` or create your own script.
 
@@ -84,7 +84,7 @@ sudo systemctl daemon-reload
 sudo systemctl start simpleserver
 ```
 
-#Test your server
+# Test your server
 
 Create test file at `/var/www/html/test/` 
 ```
@@ -114,7 +114,7 @@ curl localhost:3690/etc/ssl/test
 curl localhost:3690/etc/shadow
 ```
 
-#Debug 
+# Debug 
 
 Install `setroubleshoot` to help you understand more about SELinux errors
 Deactivate `dontaudit` to get the log for error
