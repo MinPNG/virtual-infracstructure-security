@@ -1,3 +1,4 @@
+#SELinux
 We will create a daemon service that run the script python for a simple http server
 You can use the script `simpleserver.py` and `simpleserver.service` or create your own script.
 
@@ -11,7 +12,7 @@ chmod a+x /usr/local/bin/simpleserver.py
 
 Restore the default SELinux context for the files 
 ```
-sudo restorecon -Fv /usr/local/bin/pyserver /etc/systemd/system/pyserver.service
+sudo restorecon -Fv /usr/local/bin/simpleserver /etc/systemd/system/simpleserver.service
 ```
 
 Setting up your SELinux module
@@ -72,9 +73,9 @@ allow init_t simpleserver_exec_t:file { execute execute_no_trans getattr open re
 Whenever you change your module policies via file `.te` you should repeat from this step
 Compile your module and implement it to the kernel
 ```
-make -f /usr/share/selinux/devel/Makefile pyserver.pp
-sudo semodule -i pyserver.pp
-sudo restorecon -Fv /usr/local/bin/pyserver /etc/systemd/system/pyserver.service
+make -f /usr/share/selinux/devel/Makefile simpleserver.pp
+sudo semodule -i simpleserver.pp
+sudo restorecon -Fv /usr/local/bin/simpleserver /etc/systemd/system/simpleserver.service
 ```
 
 Run you daemon service
@@ -84,6 +85,7 @@ sudo systemctl start simpleserver
 ```
 
 #Test your server
+
 Create test file at `/var/www/html/test/` 
 ```
 mkdir /var/www/html/test
